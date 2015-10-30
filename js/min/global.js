@@ -1,0 +1,1 @@
+var allNavItems=$(".main-nav li"),allTabs=$(".tab");allNavItems.on("click",function(a){a.preventDefault(),allNavItems.removeClass("active"),allTabs.removeClass("active"),$(this).addClass("active");var l=$(this).find("a").attr("href");$(l).addClass("active")});

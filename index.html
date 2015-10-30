@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Offline Static Site</title>
+  <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body>
+
+  @@include('images/svg-sprite/svg.svg')
+
+  <header class="main-header">
+
+    <h1>Offline Conf</h1>
+    <p>A <strong>fake</strong> conference all about offline capabilities in fakesville, fakerton.</p>
+
+  </header>
+
+  <nav class="main-nav">
+
+    <ul>
+      <li>
+        <a href="#speakers">
+          <svg>
+            <use xlink:href="#icons-01"></use>
+          </svg>
+          <span>Speakers</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="#schedule">
+          <svg>
+            <use xlink:href="#icons-02"></use>
+          </svg>
+          <span>Schedule</span>
+        </a>
+      </li>
+      <li>
+        <a href="#tickets">
+          <svg>
+            <use xlink:href="#icons-03"></use>
+          </svg>
+          <span>Tickets</span>
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <main class="tabs">
+
+    <div class="tab" id="speakers">
+
+      <h1>Speakers</h1>
+
+    </div>
+
+    <div class="tab active" id="schedule">
+
+      <h1>Schedule</h1>
+
+    </div>
+
+    <div class="tab" id="tickets">
+
+      <h1>Tickets</h1>
+
+    </div>
+
+  </main>
+
+  <script src="js/global.js"></script>
+
+</body>
+
+</html>

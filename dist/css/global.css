@@ -1,0 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,400italic);
+.main-nav {
+  text-align: center; }
+  .main-nav ul {
+    list-style: none;
+    display: inline-flex;
+    border: 2px solid black;
+    margin: 1rem 0;
+    border-radius: 15px;
+    overflow: hidden; }
+    .main-nav ul li a {
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      text-decoration: none;
+      color: black;
+      font-weight: bold; }
+      .main-nav ul li a svg {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 0.4rem; }
+      .main-nav ul li a svg, .main-nav ul li a span {
+        vertical-align: middle; }
+    .main-nav ul li.active a {
+      background: black;
+      color: white; }
+    .main-nav ul li.active svg {
+      fill: white; }
+
+.tabs .tab {
+  display: none; }
+  .tabs .tab.active {
+    display: block; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: 'Open Sans', sans-serif; }
+
+.main-header {
+  text-align: center;
+  background: black;
+  color: white;
+  padding: 3rem 1rem; }
+  .main-header h1 {
+    margin: 0 0 0.5rem 0; }
+
+h1 {
+  font-size: 3rem; }
+
+main.tabs {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px; }
