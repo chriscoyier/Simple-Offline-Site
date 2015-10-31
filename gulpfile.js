@@ -21,6 +21,12 @@ gulp.task('compress', function() {
     .pipe(gulp.dest('js/min'));
 });
 
+gulp.task('dist-sw', ['compress'], function() {
+  return gulp.src(['js/min/service-worker.js'])
+    .pipe(concat('service-worker.js'))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('concat', function() {
   return gulp.src(['js/min/jquery.js', 'js/min/global.js'])
     .pipe(concat('global.js'))
@@ -49,7 +55,7 @@ gulp.task('fileinclude', function() {
 
 gulp.task('default', function () {
   gulp.watch('./scss/*.scss', ['sass']);
-  gulp.watch('./js/*.js', ['compress']);
+  gulp.watch('./js/*.js', ['dist-sw']);
   gulp.watch('./images/svg/*.svg', ['svgstore', 'fileinclude']);
   gulp.watch('./index.html', ['fileinclude', browserSync.reload]);
 
