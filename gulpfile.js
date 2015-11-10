@@ -34,10 +34,16 @@ gulp.task('concat', function() {
   return gulp.src([
       // Specifying each one so it happens in order
       'js/min/jquery.js',
-      'js/min/service-worker.js',
       'js/min/global.js'
     ])
     .pipe(concat('global.js'))
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('move', function() {
+  return gulp.src([
+      'js/min/service-worker.js'
+    ])
     .pipe(gulp.dest('dist/js'));
 });
 
@@ -63,7 +69,7 @@ gulp.task('fileinclude', function() {
 
 gulp.task('default', function () {
   gulp.watch('./scss/*.scss', ['css']);
-  gulp.watch('./js/*.js', ['compress', 'concat']);
+  gulp.watch('./js/*.js', ['compress', 'concat', 'move']);
   gulp.watch('./images/svg/*.svg', ['svgstore', 'fileinclude']);
   gulp.watch('./index.html', ['fileinclude', browserSync.reload]);
 
