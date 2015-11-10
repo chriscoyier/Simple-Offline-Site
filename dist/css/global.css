@@ -3,6 +3,8 @@
   text-align: center; }
   .main-nav ul {
     list-style: none;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     border: 2px solid black;
     margin: 1rem 0;
@@ -44,14 +46,39 @@ body {
   text-align: center;
   background: black;
   color: white;
-  padding: 3rem 1rem; }
+  padding: 3rem 5rem 3rem; }
   .main-header h1 {
     margin: 0 0 0.5rem 0; }
 
 h1 {
-  font-size: 3rem; }
+  font-size: 3rem;
+  margin: 0 0 1rem 0; }
+
+p {
+  margin: 0 0 0.5rem 0; }
 
 main.tabs {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px; }
+
+.speaker-list {
+  list-style: none;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .speaker-list li {
+    width: 32%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 40px 10px; }
+
+.schedule dt {
+  font-weight: bold; }
+
+.schedule dt ~ dt {
+  margin-top: 1rem; }
