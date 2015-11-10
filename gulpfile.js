@@ -44,7 +44,7 @@ gulp.task('move', function() {
   return gulp.src([
       'js/min/service-worker.js'
     ])
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('svgstore', function () {

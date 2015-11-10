@@ -49,6 +49,8 @@ body {
   padding: 3rem 5rem 3rem; }
   .main-header h1 {
     margin: 0 0 0.5rem 0; }
+  .main-header a {
+    color: white; }
 
 h1 {
   font-size: 3rem;
