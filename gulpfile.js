@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 var svgstore = require('gulp-svgstore');
 var svgmin = require('gulp-svgmin');
 var cheerio = require('gulp-cheerio');
@@ -8,9 +10,16 @@ var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 var browserSync = require('browser-sync').create();
 
-gulp.task('sass', function () {
+// Not used at the moment, was messing up BrowserSync
+// var sourcemaps = require('gulp-sourcemaps');
+
+
+gulp.task('css', function () {
   gulp.src('./scss/*.scss')
     .pipe(sass().on('error', sass.logError))
+    // .pipe(sourcemaps.init())
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+    // .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.stream());
 });
@@ -21,14 +30,13 @@ gulp.task('compress', function() {
     .pipe(gulp.dest('js/min'));
 });
 
-gulp.task('dist-sw', ['compress'], function() {
-  return gulp.src(['js/min/service-worker.js'])
-    .pipe(concat('service-worker.js'))
-    .pipe(gulp.dest('dist'));
-});
-
 gulp.task('concat', function() {
-  return gulp.src(['js/min/jquery.js', 'js/min/global.js'])
+  return gulp.src([
+      // Specifying each one so it happens in order
+      'js/min/jquery.js',
+      'js/min/service-worker.js',
+      'js/min/global.js'
+    ])
     .pipe(concat('global.js'))
     .pipe(gulp.dest('dist/js'));
 });
@@ -54,8 +62,8 @@ gulp.task('fileinclude', function() {
 });
 
 gulp.task('default', function () {
-  gulp.watch('./scss/*.scss', ['sass']);
-  gulp.watch('./js/*.js', ['dist-sw']);
+  gulp.watch('./scss/*.scss', ['css']);
+  gulp.watch('./js/*.js', ['compress', 'concat']);
   gulp.watch('./images/svg/*.svg', ['svgstore', 'fileinclude']);
   gulp.watch('./index.html', ['fileinclude', browserSync.reload]);
 
