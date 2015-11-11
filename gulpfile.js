@@ -75,7 +75,7 @@ gulp.task('default', function () {
 
   browserSync.init({
     server: {
-      baseDir: "./dist/"
+      baseDir: './dist/'
     }
   });
 });
