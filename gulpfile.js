@@ -9,19 +9,17 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var fileinclude = require('gulp-file-include');
 var browserSync = require('browser-sync').create();
-
-// Not used at the moment, was messing up BrowserSync
-// var sourcemaps = require('gulp-sourcemaps');
+var sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('css', function () {
   gulp.src('./scss/*.scss')
     .pipe(sass().on('error', sass.logError))
-    // .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
-    // .pipe(sourcemaps.write('.'))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 gulp.task('compress', function() {
