@@ -31,8 +31,8 @@ gulp.task('compress', function() {
 gulp.task('concat', function() {
   return gulp.src([
       // Specifying each one so it happens in order
-      'js/min/jquery.js',
-      'js/min/global.js'
+      './js/min/jquery.js',
+      './js/min/global.js'
     ])
     .pipe(concat('global.js'))
     .pipe(gulp.dest('dist/js'));
