@@ -115,7 +115,7 @@ self.addEventListener("fetch", function(event) {
                  available to caches.match(event.request) calls, when looking
                  for cached responses.
               */
-              cache.put(event.request, cacheCopy);
+              return cache.put(event.request, cacheCopy);
             })
             .then(function() {
               console.log('WORKER: fetch response stored in cache.', event.request.url);
